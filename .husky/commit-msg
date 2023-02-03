@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo -e "================\ncommitlint:\n"
+npx --no -- commitlint --edit ${1}
