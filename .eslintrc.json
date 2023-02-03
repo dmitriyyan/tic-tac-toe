@@ -20,7 +20,17 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "vitest"
   ],
-  "rules": {}
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/setupTests.ts"
+        ]
+      }
+    ]
+  }
 }

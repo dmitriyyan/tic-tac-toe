@@ -10,7 +10,10 @@
     "lint": "eslint . --fix --max-warnings=0",
     "format": "prettier . --write",
     "prepare": "husky install",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "test watch": "vitest",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
   },
   "lint-staged": {
     "src/*.{js,jsx,ts,tsx}": [
@@ -26,6 +29,9 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
@@ -40,11 +46,14 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-vitest": "^0.0.32",
     "husky": "^8.0.0",
+    "jsdom": "^21.1.0",
     "lint-staged": "^13.1.0",
     "prettier": "2.8.3",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
-    "vite-tsconfig-paths": "^4.0.5"
+    "vite-tsconfig-paths": "^4.0.5",
+    "vitest": "^0.28.4"
   }
 }
