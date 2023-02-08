@@ -31,6 +31,15 @@
           "**/setupTests.ts"
         ]
       }
+    ],
+    "import/prefer-default-export": [
+      "off"
+    ],
+    "react/require-default-props": [
+      "error",
+      {
+        "functions": "defaultArguments"
+      }
     ]
   }
 }
