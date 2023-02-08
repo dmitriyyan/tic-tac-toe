@@ -7,6 +7,12 @@
       ],
       "@components/*": [
         "components/*"
+      ],
+      "@app/*": [
+        "app/*"
+      ],
+      "@utils/*": [
+        "utils/*"
       ]
     }
   }

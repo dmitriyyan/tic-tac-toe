@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --project tsconfig.build.json && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --max-warnings=0",
     "format": "prettier . --write",
@@ -23,8 +23,10 @@
     "src/*.{css,scss,json}": "prettier --write"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
