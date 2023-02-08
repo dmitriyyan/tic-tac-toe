@@ -13,7 +13,21 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:prettier/recommended"
   ],
-  "overrides": [],
+  "overrides": [
+    {
+      "files": [
+        "src/**/*.slice.ts"
+      ],
+      "rules": {
+        "no-param-reassign": [
+          "error",
+          {
+            "props": false
+          }
+        ]
+      }
+    }
+  ],
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaVersion": "latest",
@@ -28,7 +42,10 @@
       "error",
       {
         "devDependencies": [
-          "**/setupTests.ts"
+          "**/*/testUtils.tsx",
+          "**/setupTests.ts",
+          "**/*/*.test.ts",
+          "**/*/*.test.tsx"
         ]
       }
     ],
