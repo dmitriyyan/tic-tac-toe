@@ -1,13 +1,18 @@
 import { useState } from 'react';
-import useBoard from '@components/Board/hooks/useBoard';
+import useBoardCell from './useBoardCell';
 
-function Cell() {
+export type Props = {
+  row: number;
+  col: number;
+};
+
+function Cell({ row, col }: Props) {
   const [mark, setMark] = useState('');
-  const [playerTurn, handleChangeTurn] = useBoard();
+  const { playerTurn, isDisabled, handlePlayerMove } = useBoardCell({ row, col });
 
   const handleClick = () => {
     setMark(playerTurn);
-    handleChangeTurn();
+    handlePlayerMove({ row, col });
   };
 
   return (
@@ -15,7 +20,7 @@ function Cell() {
       style={{ padding: '10px', margin: '5px' }}
       type="button"
       onClick={handleClick}
-      disabled={mark !== ''}
+      disabled={isDisabled}
     >
       {mark}
     </button>
