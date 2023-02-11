@@ -6,7 +6,7 @@ type Board = string[][];
 
 export type BoardState = {
   playerTurn: PlayerTurn;
-  winner: PlayerTurn | undefined;
+  winner: PlayerTurn | undefined | false;
   board: Board;
 };
 
@@ -42,6 +42,10 @@ const isWinner = (board: Board, player: PlayerTurn) => {
   return isWinByRow || isWinByCol || isWinByDiagonal;
 };
 
+const isTie = (board: Board) => {
+  return board.every((row) => row.every((col) => col !== ''));
+};
+
 export const counterSlice = createSlice({
   name: 'board',
   initialState,
@@ -52,9 +56,9 @@ export const counterSlice = createSlice({
 
       if (isWinner(state.board, state.playerTurn)) {
         state.winner = state.playerTurn;
-      }
-
-      if (state.playerTurn === 'O') {
+      } else if (isTie(state.board)) {
+        state.winner = false;
+      } else if (state.playerTurn === 'O') {
         state.playerTurn = 'X';
       } else {
         state.playerTurn = 'O';
