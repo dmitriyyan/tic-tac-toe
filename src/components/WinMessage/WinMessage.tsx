@@ -9,10 +9,12 @@ function WinMessage() {
   }
 
   if (winner === false) {
-    return <h2>It&apos;s a tie!</h2>;
+    const tieMessage = "It's a tie!";
+    return <h2>{tieMessage}</h2>;
   }
 
-  return <h2>Player {winner} wins!</h2>;
+  const winMessage = `Player ${winner} wins!`;
+  return <h2>{winMessage}</h2>;
 }
 
 export default WinMessage;
