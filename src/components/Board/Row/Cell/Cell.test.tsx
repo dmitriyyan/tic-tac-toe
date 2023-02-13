@@ -9,7 +9,7 @@ import { initialState as boardInitialState } from '@components/Board/board.slice
 import Cell from './Cell';
 
 const getCell = () => {
-  return screen.getByRole('button');
+  return screen.getByLabelText(/tic-tac-toe-cell-\d-\d/);
 };
 
 describe('Cell', () => {
