@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import useBoardCell from './useBoardCell';
 
 export type Props = {
@@ -7,20 +6,25 @@ export type Props = {
 };
 
 function Cell({ row, col }: Props) {
-  const [mark, setMark] = useState('');
-  const { playerTurn, isDisabled, handlePlayerMove } = useBoardCell({ row, col });
+  const { mark, isDisabled, handlePlayerMove } = useBoardCell({ row, col });
 
   const handleClick = () => {
-    setMark(playerTurn);
     handlePlayerMove({ row, col });
   };
 
   return (
     <button
-      style={{ padding: '10px', margin: '5px' }}
+      style={{
+        padding: '10px',
+        margin: '5px',
+        height: '40px',
+        width: '40px',
+        verticalAlign: 'middle',
+      }}
       type="button"
       onClick={handleClick}
       disabled={isDisabled}
+      aria-label={`tic-tac-toe-cell-${row}-${col}`}
     >
       {mark}
     </button>

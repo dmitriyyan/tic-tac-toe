@@ -60,16 +60,21 @@ export const counterSlice = createSlice({
         state.playerTurn = 'O';
       }
     },
+    resetGame: (state) => {
+      state.board = [...initialState.board];
+      state.winner = undefined;
+      state.playerTurn = 'X';
+    },
   },
 });
 
-export const { playerMove } = counterSlice.actions;
+export const { playerMove, resetGame } = counterSlice.actions;
 
 export const selectPlayerTurn = (state: RootState) => state.board.playerTurn;
 export const selectWinner = (state: RootState) => state.board.winner;
 export const selectIsCellDisabled = (state: RootState, coordinates: Move) => {
   const { row, col } = coordinates;
-  return state.board.board[row][col] !== '' || state.board.winner !== undefined;
+  return state.board.board[row][col];
 };
 
 export default counterSlice.reducer;
