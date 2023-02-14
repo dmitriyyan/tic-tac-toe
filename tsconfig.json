@@ -1,6 +1,11 @@
 {
   "extends": "./paths.json",
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [

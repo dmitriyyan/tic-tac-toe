@@ -51,4 +51,19 @@ describe('Cell', () => {
     await userEvent.click(cell);
     expect(cell).toBeEmptyDOMElement();
   });
+
+  it('Should render X inside when hovered', async () => {
+    renderWithProviders(<Cell row={0} col={0} />);
+    const cell = getCell();
+    await userEvent.hover(cell);
+    expect(cell).toHaveTextContent('X');
+  });
+
+  it('Should not render X inside when hovered if it is disabled', async () => {
+    renderWithProviders(<Cell row={0} col={0} />);
+    const cell = getCell();
+    await userEvent.click(cell);
+    await userEvent.hover(cell);
+    expect(cell).toHaveTextContent('X');
+  });
 });

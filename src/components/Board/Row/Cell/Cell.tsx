@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 import useBoardCell from './useBoardCell';
+import styles from './Cell.module.css';
 
 export type Props = {
   row: number;
@@ -6,27 +9,45 @@ export type Props = {
 };
 
 function Cell({ row, col }: Props) {
-  const { mark, isDisabled, handlePlayerMove } = useBoardCell({ row, col });
+  const [isFocused, setIsFocused] = useState(false);
+  const { mark, playerTurn, isDisabled, handlePlayerMove } = useBoardCell({ row, col });
 
   const handleClick = () => {
+    setIsFocused(false);
     handlePlayerMove({ row, col });
+  };
+
+  const handleMouseEnter = () => {
+    if (!isDisabled) {
+      setIsFocused(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isFocused) {
+      setIsFocused(false);
+    }
+  };
+
+  const renderContent = () => {
+    if (isDisabled || !isFocused) {
+      return mark;
+    }
+
+    return playerTurn;
   };
 
   return (
     <button
-      style={{
-        padding: '10px',
-        margin: '5px',
-        height: '40px',
-        width: '40px',
-        verticalAlign: 'middle',
-      }}
+      className={styles.cell}
       type="button"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={handleClick}
       disabled={isDisabled}
       aria-label={`tic-tac-toe-cell-${row}-${col}`}
     >
-      {mark}
+      {renderContent()}
     </button>
   );
 }
