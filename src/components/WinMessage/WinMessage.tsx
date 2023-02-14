@@ -1,5 +1,6 @@
 import { useAppSelector } from '@app/hooks';
 import { selectWinner } from '@components/Board/board.slice';
+import styles from './WinMessage.module.css';
 
 function WinMessage() {
   const winner = useAppSelector(selectWinner);
@@ -14,7 +15,7 @@ function WinMessage() {
   }
 
   const winMessage = `Player ${winner} wins!`;
-  return <h2>{winMessage}</h2>;
+  return <h2 className={styles.header}>{winMessage}</h2>;
 }
 
 export default WinMessage;
